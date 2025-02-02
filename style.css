@@ -10,7 +10,7 @@ body {
 
 /* Header Profile Section */
 header {
-    background: <img src="images/test.jpeg"> no-repeat center center/cover;
+    background: img src="images/test2.jpeg" no-repeat center center/cover;
     color: white;
     padding: 60px 20px;
     position: relative;
