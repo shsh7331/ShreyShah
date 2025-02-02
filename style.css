@@ -12,6 +12,14 @@ header {
     padding: 20px;
 }
 
+.profile {
+    background: url('images/test2.jpeg') no-repeat center/cover;
+    padding: 50px 20px;
+    borderr-radius: 10px;
+    color: white;
+    text-allign: center;
+}
+
 .profile img {
     width: 150px;
     border-radius: 50%;
