@@ -1,1 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.profile img {
+    width: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.profile h1 {
+    margin: 10px 0 5px;
+}
+
+.profile a {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.overview {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.updates {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.updates-container {
+    max-height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.update {
+    background-color: #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 
