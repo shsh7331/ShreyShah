@@ -15,14 +15,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    window.showContent = function (tabId) {
-        // Hide all content
-        document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+    function addUpdate() {
+        let updatesContainer = document.getElementById("updates-container");
         
-        // Show selected tab content
-        document.getElementById(tabId).classList.add('active');
-    };
+        if (!updatesContainer) {
+            console.error("Element #updates-container not found!");
+            return; // Exit function if element doesn't exist
+        }
+
+        let newUpdate = document.createElement("p");
+        newUpdate.textContent = "New Weekly Update!";
+        updatesContainer.appendChild(newUpdate);
+    }
+
+    // Run the function after the DOM is fully loaded
+    addUpdate();
 });
+
 
 
 function showContent(tabId) {
