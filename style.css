@@ -193,7 +193,7 @@ header::before {
 
 /* Tab Buttons */
 .tab {
-    background: #ddd;
+    background: green;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -209,6 +209,26 @@ header::before {
 
 .tab:focus {
     background: #555;
-    color: green;
+    color: white;
 }
+/* Tab content */
+.tab-content {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.content.active {
+    display: block;
+}
+
 
