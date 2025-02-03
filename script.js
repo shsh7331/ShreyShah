@@ -22,3 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
         tabsContainer.scrollLeft += event.deltaY;
     });
 });
+
+function showContent(tabId) {
+    // Hide all content
+    document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+    
+    // Show selected tab content
+    document.getElementById(tabId).classList.add('active');
+}
