@@ -154,7 +154,7 @@ header::before {
 
 /* Milestones Section */
 .milestones {
-    background-color: #04AA6D;
+    background-color: white;
     padding: 30px;
     margin: 20px auto;
     max-width: 900px;
@@ -209,6 +209,6 @@ header::before {
 
 .tab:focus {
     background: #555;
-    color: white;
+    color: green;
 }
 
