@@ -43,12 +43,12 @@ header::before {
 
 .profile h1 {
     margin: 10px 0 5px;
-    font-size: 28px;
+    font-size: 21px;
 }
 
 .profile p {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 100;
 }
 
 .profile a {
