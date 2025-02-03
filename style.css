@@ -10,7 +10,7 @@ body {
 
 /* Header Profile Section */
 header {
-    background: img src="images/test2.jpeg" no-repeat center center/cover;
+    background: url('./images/test2.jpeg') no-repeat center center/cover;
     color: white;
     padding: 60px 20px;
     position: relative;
@@ -151,3 +151,64 @@ header::before {
         font-size: 16px;
     }
 }
+
+/* Milestones Section */
+.milestones {
+    background-color: white;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Tabs Container */
+.tabs-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+/* Horizontal Scrolling */
+.tabs {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    width: max-content;
+}
+
+.tabs-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tabs-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.tabs-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+/* Tab Buttons */
+.tab {
+    background: #ddd;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.tab:hover {
+    background: #bbb;
+}
+
+.tab:focus {
+    background: #555;
+    color: white;
+}
+
