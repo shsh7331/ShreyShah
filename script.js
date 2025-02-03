@@ -13,3 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
     addUpdate(4, "Implemented responsive design for better mobile view.");
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tabsContainer = document.querySelector(".tabs-container");
+
+    tabsContainer.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        tabsContainer.scrollLeft += event.deltaY;
+    });
+});
