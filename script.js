@@ -17,20 +17,21 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     function addUpdate() {
         let updatesContainer = document.getElementById("updates-container");
-        
+
         if (!updatesContainer) {
-            console.error("Element #updates-container not found!");
-            return; // Exit function if element doesn't exist
+            console.error("❌ Element #updates-container not found!"); // Debugging
+            return; // Stop execution if not found
         }
 
         let newUpdate = document.createElement("p");
         newUpdate.textContent = "New Weekly Update!";
         updatesContainer.appendChild(newUpdate);
+        console.log("✅ Successfully added an update!"); // Debugging
     }
 
-    // Run the function after the DOM is fully loaded
-    addUpdate();
+    addUpdate(); // Run the function
 });
+
 
 
 
