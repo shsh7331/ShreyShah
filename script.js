@@ -15,13 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const tabsContainer = document.querySelector(".tabs-container");
-
-    tabsContainer.addEventListener("wheel", (event) => {
-        event.preventDefault();
-        tabsContainer.scrollLeft += event.deltaY;
-    });
+    window.showContent = function (tabId) {
+        // Hide all content
+        document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+        
+        // Show selected tab content
+        document.getElementById(tabId).classList.add('active');
+    };
 });
+
 
 function showContent(tabId) {
     // Hide all content
@@ -30,3 +32,5 @@ function showContent(tabId) {
     // Show selected tab content
     document.getElementById(tabId).classList.add('active');
 }
+
+
