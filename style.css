@@ -120,9 +120,12 @@ header::before {
 }
 
 .update h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #333;
+    background-color: white;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .update p {
@@ -230,5 +233,8 @@ header::before {
 .content.active {
     display: block;
 }
-
+.iframe {
+    display: block;
+    margin: 20px auto;
+}
 
