@@ -1,0 +1,119 @@
+\documentclass[sigconf]{acmart}
+
+\title{Analyzing the Correlation Between Crime and Temperature in Chicago}
+
+\author{Patrick Ridley, Shrey Shah}
+\affiliation{
+  \institution{University of Colorado Boulder}
+  \city{Boulder}
+  \state{CO}
+  \country{USA}
+}
+\email{{pari8094, shsh7331}@colorado.edu}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Crime rates in urban areas are influenced by various environmental and socioeconomic factors, with temperature fluctuations emerging as a potential driver of violent crime. This study explores the correlation between temperature variations and violent crime occurrences in Chicago from 2010 to 2025. Using data mining techniques such as clustering, association rule mining, and time-series analysis, we aim to uncover seasonal trends, geographic hotspots, and recurring patterns. Our goal is to provide actionable insights to assist law enforcement, urban planners, and policymakers in crime prevention and resource allocation strategies.
+\end{abstract}
+
+\section{Introduction}
+Crime patterns are shaped by multiple factors, including economic conditions, social structures, and environmental influences. One of the less explored yet significant factors is temperature. Several studies suggest that violent crimes, such as assaults, robberies, and homicides, increase with higher temperatures due to increased outdoor activity and heightened aggression. Conversely, colder temperatures may suppress violent encounters. This project analyzes crime and weather data in Chicago from 2010 to 2025 to determine whether specific temperature conditions impact violent crime occurrences.
+
+\section{Related Work}
+Previous research has examined the relationship between weather and crime rates:
+\begin{itemize}
+    \item \textbf{Anderson (1987)} proposed the Heat Hypothesis, suggesting that higher temperatures increase violent crime occurrences due to heightened aggression.
+    \item \textbf{Chicago Shooting Study (2012-2016)} found a significant correlation between temperature increases and shooting incidents, breaking trends into weekdays, weekends, and holidays.
+    \item \textbf{Harries et al. (1984)} studied property crimes in Canada, noting mixed temperature-crime relationships in different climate zones.
+    \item \textbf{Crime, Heat, and Poverty Study} examined the intersection of poverty levels and temperature-driven crime variations.
+\end{itemize}
+Unlike prior research that relies on regression models, our study integrates modern data mining techniques, including clustering, frequent pattern mining, and time-series analysis.
+
+\section{Proposed Methodology}
+
+\subsection{Data Preprocessing}
+\begin{itemize}
+    \item Remove duplicates and irrelevant records.
+    \item Filter out nonviolent crimes (e.g., white-collar crimes, shoplifting).
+    \item Exclude cases where an arrest was not performed.
+    \item Normalize date/time formats and handle missing values.
+\end{itemize}
+
+\subsection{Data Integration}
+\begin{itemize}
+    \item Aggregate crime data to daily totals for alignment with temperature data.
+    \item Compute daily high/low/average temperature values.
+    \item Merge datasets based on date and violent crime type.
+\end{itemize}
+
+\subsection{Database Indexing and Optimization}
+\begin{itemize}
+    \item Primary indexing on date and location for optimized retrieval.
+    \item Secondary indexing on crime type and severity.
+    \item Data partitioning by month or year for performance efficiency.
+\end{itemize}
+
+\subsection{Data Mining Techniques}
+\begin{itemize}
+    \item \textbf{Exploratory Data Analysis (EDA)}: Scatter plots, trend lines, and data cube analysis for crime-temperature trends.
+    \item \textbf{Clustering}: K-Means and DBSCAN for identifying crime patterns and hotspots across temperature ranges.
+    \item \textbf{Association Rule Mining}: Apriori and FP-Growth algorithms to discover temperature-related crime associations.
+    \item \textbf{Time-Series Analysis}: ARIMA and seasonality decomposition for identifying crime fluctuations over time.
+\end{itemize}
+
+\section{Datasets}
+\subsection{Chicago Crime Data}
+\begin{itemize}
+    \item Source: City of Chicago Open Data.
+    \item Over 1 million records (2010–present) with details on crime type, location, date/time, and arrest status.
+\end{itemize}
+\subsection{Chicago Weather Data}
+\begin{itemize}
+    \item Source: NOAA National Centers for Environmental Information.
+    \item Daily temperature (high/low) and climate details.
+\end{itemize}
+
+\section{Evaluation Methods}
+To validate our findings, we will apply multiple evaluation techniques:
+\begin{itemize}
+    \item \textbf{Statistical Correlation Metrics}: Pearson and Spearman correlation to measure temperature-crime relationships.
+    \item \textbf{Clustering Evaluation}: Silhouette Score and Davies–Bouldin Index to assess crime grouping effectiveness.
+    \item \textbf{Time-Series Validation}: Baseline trend comparison, rolling window analysis, and seasonality strength measurement.
+\end{itemize}
+
+\section{Tools and Technologies}
+\begin{itemize}
+    \item \textbf{Programming and Data Processing}: Python (Pandas, NumPy, Matplotlib).
+    \item \textbf{Database and Storage}: MySQL for structured relational data.
+    \item \textbf{Visualization}: Matplotlib and Seaborn for graphical representation.
+\end{itemize}
+
+\section{Project Timeline}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{Date} & \textbf{Task} \\
+        \hline
+        Feb 3 & Project Proposal \\
+        Feb 17 & Peer Feedback \\
+        Mar 3 & Proposal Paper \\
+        Mar 17 & Progress Report \\
+        Apr 28 & Code and Descriptions \\
+        Apr 28 & Presentation \\
+        Apr 28 & Peer Evaluation and Interview \\
+        \hline
+    \end{tabular}
+    \caption{Milestones and Timeline}
+    \label{tab:timeline}
+\end{table}
+
+\section{Conclusion}
+This project seeks to uncover actionable crime-weather relationships using data mining techniques. By integrating historical crime and temperature data, we aim to develop insights that enhance public safety, law enforcement strategies, and urban policy decisions.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
