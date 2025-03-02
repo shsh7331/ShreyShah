@@ -1,97 +1,175 @@
-\documentclass[sigconf]{acmart}
+\documentclass[sigconf,twocolumn,11pt]{acmart}
+\AtBeginDocument{\fontsize{11}{13.2}\selectfont} % 11pt font with 1.1 spacing
 
 \title{Analyzing the Correlation Between Crime and Temperature in Chicago}
 
-\author{Patrick Ridley, Shrey Shah}
+\author{Patrick Ridley}
+\email{pari8094@colorado.edu}
 \affiliation{
   \institution{University of Colorado Boulder}
-  \city{Boulder}
-  \state{CO}
   \country{USA}
 }
-\email{{pari8094, shsh7331}@colorado.edu}
 
+\author{Shrey Shah}
+\email{shsh7331@colorado.edu}
+\affiliation{
+  \institution{University of Colorado Boulder}
+  \country{USA}
+}
+\begin{abstract}
+Crime patterns in urban areas are influenced by various environmental factors, with temperature fluctuations playing a significant role in the frequency of violent crimes. Previous research has shown a correlation between higher temperatures and increased instances of violent crimes, such as assaults and homicides. This study aims to analyze the relationship between temperature variations and violent crime occurrences in Chicago from 2010 to 2025. By leveraging publicly available crime and weather datasets, we seek to uncover patterns that can provide insight into how temperature impacts criminal activity. Through data mining techniques, we will explore whether specific weather conditions contribute to crime surges, offering a data-driven perspective on crime prevention.
+
+
+To achieve this, we will employ various data analysis methods, including exploratory data analysis (EDA), clustering, and association rule mining. Data preprocessing will ensure consistency between crime and weather datasets, aligning timestamps and handling missing values. Clustering techniques will be applied to detect crime trends and seasonal variations, while correlation analysis will measure the strength of the relationship between temperature and crime. Additionally, association rule mining will identify recurring patterns in violent crime occurrences under different temperature conditions.
+
+
+The findings from this study will provide valuable insights for law enforcement, urban planners, and policymakers in designing strategies for crime prevention and resource allocation. By identifying when and where violent crimes are more likely to occur based on temperature patterns, law enforcement agencies can optimize patrol scheduling and emergency response planning. Furthermore, city officials can use this information to implement community safety initiatives and temperature-based crime intervention strategies. This research contributes to a deeper understanding of environmental influences on crime and highlights the importance of integrating climate factors into public safety planning.
+\end{abstract}
 \begin{document}
+
 \maketitle
 
-\begin{abstract}
-Crime rates in urban areas are influenced by various environmental and socioeconomic factors, with temperature fluctuations emerging as a potential driver of violent crime. This study explores the correlation between temperature variations and violent crime occurrences in Chicago from 2010 to 2025. Using data mining techniques such as clustering, association rule mining, and time-series analysis, we aim to uncover seasonal trends, geographic hotspots, and recurring patterns. Our goal is to provide actionable insights to assist law enforcement, urban planners, and policymakers in crime prevention and resource allocation strategies.
-\end{abstract}
+\section{Problem Statement and Motivation}
+Crime patterns in urban areas are influenced by a range of environmental and socioeconomic factors, with temperature fluctuations emerging as a potential driver of violent crime rates. Several studies suggest that warmer temperatures correlate with increased occurrences of violent crimes, such as assaults, robberies, and homicides. This phenomenon is often attributed to increased outdoor activity, heightened aggression due to heat, and greater social interactions that can lead to conflicts. In contrast, colder temperatures may deter outdoor interactions, reducing the likelihood of violent encounters.
 
-\section{Introduction}
-Crime patterns are shaped by multiple factors, including economic conditions, social structures, and environmental influences. One of the less explored yet significant factors is temperature. Several studies suggest that violent crimes, such as assaults, robberies, and homicides, increase with higher temperatures due to increased outdoor activity and heightened aggression. Conversely, colder temperatures may suppress violent encounters. This project analyzes crime and weather data in Chicago from 2010 to 2025 to determine whether specific temperature conditions impact violent crime occurrences.
+This project aims to analyze historical crime and weather data in Chicago from 2010 to 2025 to uncover patterns between temperature variations and violent crime rates. By applying data mining techniques, we seek to determine whether specific temperature conditions influence crime surges or reductions. Through clustering, association rule mining, and time-series analysis, we will examine seasonal trends, geographic hotspots, and recurring patterns in violent crime occurrences.
 
-\section{Related Work}
-Previous research has examined the relationship between weather and crime rates:
+The goal is to provide data-driven insights that can assist law enforcement, urban planners, and policymakers in crime prevention and resource allocation strategies. By identifying when and where violent crimes are most likely to occur under different temperature conditions, this research can help optimize police staffing, emergency response preparedness, and community intervention programs to enhance public safety.
+
+\section{Literature Survey}
+Several studies have examined the impact of weather on crime trends:
 \begin{itemize}
-    \item \textbf{Anderson (1987)} proposed the Heat Hypothesis, suggesting that higher temperatures increase violent crime occurrences due to heightened aggression.
-    \item \textbf{Chicago Shooting Study (2012-2016)} found a significant correlation between temperature increases and shooting incidents, breaking trends into weekdays, weekends, and holidays.
-    \item \textbf{Harries et al. (1984)} studied property crimes in Canada, noting mixed temperature-crime relationships in different climate zones.
-    \item \textbf{Crime, Heat, and Poverty Study} examined the intersection of poverty levels and temperature-driven crime variations.
+    \item \textbf{Anderson (1987) - The Heat Hypothesis}: Suggests that violent crime increases in higher temperatures due to heightened aggression. Analyzed multiple cities, including Chicago, to validate these findings.
+    \item \textbf{The Association Between Weather and Daily Shootings in Chicago (2012--2016)}: Found that significant increases in temperature are associated with higher shootings, breaking down trends by weekdays, weekends, and holidays.
+    \item \textbf{Harries et al. (1984) - Property Crime and Weather Relationship}: Found that property crimes have mixed relationships with temperature, with some increasing during cold weather. Conducted in Vancouver and Ottawa, showing that different climate zones experience varying crime-weather correlations.
+    \item \textbf{The Urban Crime and Heat Gradient in High and Low-Poverty Areas}: Reviews temperature shifts and poverty levels in crime rates. While not the primary focus of our study, it suggests an additional socioeconomic layer we may explore.
+    \item Most prior studies rely on statistical regression models without incorporating modern data mining techniques such as clustering, association rule mining, and predictive modeling. Our approach differentiates itself by applying these techniques to large-scale data while integrating crime type, location, and severity alongside temperature variations.
 \end{itemize}
-Unlike prior research that relies on regression models, our study integrates modern data mining techniques, including clustering, frequent pattern mining, and time-series analysis.
 
-\section{Proposed Methodology}
-
-\subsection{Data Preprocessing}
+\section{Proposed Work}
+\subsection{Data Preprocessing and Cleaning}
 \begin{itemize}
-    \item Remove duplicates and irrelevant records.
+    \item Remove duplicate and irrelevant records.
     \item Filter out nonviolent crimes (e.g., white-collar crimes, shoplifting).
     \item Exclude cases where an arrest was not performed.
-    \item Normalize date/time formats and handle missing values.
+    \item Handle missing values in crime and weather datasets.
+    \item Normalize date/time formats for merging.
 \end{itemize}
 
-\subsection{Data Integration}
+\subsection{Data Attributes}
 \begin{itemize}
-    \item Aggregate crime data to daily totals for alignment with temperature data.
-    \item Compute daily high/low/average temperature values.
-    \item Merge datasets based on date and violent crime type.
+    \item \textbf{Nominal:} Crime type, weather condition.
+    \item \textbf{Numerical}: Temperature, crime count, crime severity index.
+    \item \textbf{Boolean}: Arrest made (yes/no).
+    \item \textbf{Time-Based}: Date, season, time of crime.
+    \item \textbf{Derived Attributes}: Processed data used for trend analysis.
+
+\end{itemize}
+
+
+\subsection{Data Integration and Handling Time Granularity Issues}
+\begin{itemize}
+    \item Align timestamps by aggregating crime counts to daily totals.
+    \item Aggregate weather data into daily min/max/average temperature.
+    \item Merge crime and temperature datasets based on date and crime type.
 \end{itemize}
 
 \subsection{Database Indexing and Optimization}
 \begin{itemize}
-    \item Primary indexing on date and location for optimized retrieval.
-    \item Secondary indexing on crime type and severity.
-    \item Data partitioning by month or year for performance efficiency.
+    \item Primary Indexing: Based on date and location (latitude/longitude) for optimized lookups.
+    \item Secondary Indexing: On crime type and severity to speed up queries.
+    \item Partitioning Strategy: Monthly or yearly partitions for efficiency.
 \end{itemize}
 
-\subsection{Data Mining Techniques}
+\section{Data Mining Techniques}
+\subsection{Descriptive Analytics: Exploratory Data Analysis (EDA)}
+\subsubsection{Visualization}
 \begin{itemize}
-    \item \textbf{Exploratory Data Analysis (EDA)}: Scatter plots, trend lines, and data cube analysis for crime-temperature trends.
-    \item \textbf{Clustering}: K-Means and DBSCAN for identifying crime patterns and hotspots across temperature ranges.
-    \item \textbf{Association Rule Mining}: Apriori and FP-Growth algorithms to discover temperature-related crime associations.
-    \item \textbf{Time-Series Analysis}: ARIMA and seasonality decomposition for identifying crime fluctuations over time.
+    \item Scatter plots: Temperature high/low vs. crime rate.
+    \item Trend lines: Crime rate over time and temperature variation.
+\end{itemize}
+\subsubsection{Data Cube Analysis:}
+\begin{itemize}
+    \item Violent crimes vs. temperature highs/lows.
+    \item Crimes by month/season.
+
+\end{itemize}
+
+\subsection{Clustering: Crime Pattern Detection}
+\begin{itemize}
+    \item Clustering techniques will help identify hidden crime patterns that are not apparent in raw data.
+\end{itemize}
+\subsubsection{K-Means Clustering}
+\begin{itemize}
+    \item Groups crime incidents based on temperature conditions.
+    \item Identifying distinct patterns at low, moderate, and high temperatures.
+    \item Helps detect seasonal crime trends (e.g., more assaults in summer).
+
+\end{itemize}
+
+\subsection{Association Rule Mining}
+\begin{itemize}
+    \item Frequent pattern mining techniques will identify strong relationships between crime occurrences and weather patterns.
+\end{itemize}
+\subsubsection{Apriori Algorithm}
+\begin{itemize}
+    \item Extracts rules such as “Higher temperatures increase violent crime frequency.”
+\end{itemize}
+\subsubsection{FP-Growth Algorithm}
+\begin{itemize}
+    \item Analyzes frequent crime patterns across temperature highs, lows, and seasonal shifts.
+\end{itemize}
+
+\subsection{Time-Series Analysis: Forecasting Crime Trends}
+\begin{itemize}
+    \item Time-series techniques will be used to analyze seasonal crime fluctuations over time.
+\end{itemize}
+\subsubsection{ARIMA (AutoRegressive Integrated Moving Average)}
+\begin{itemize}
+    \item Models and forecasts crime rate trends based on historical data.
+\end{itemize}
+\subsubsection{Seasonality Decomposition}
+\begin{itemize}
+    \item Identifies recurring crime fluctuations across different seasons.
 \end{itemize}
 
 \section{Datasets}
-\subsection{Chicago Crime Data}
+\subsubsection{\textbf{Chicago Crime Data}}
 \begin{itemize}
-    \item Source: City of Chicago Open Data.
-    \item Over 1 million records (2010–present) with details on crime type, location, date/time, and arrest status.
+    \item City of Chicago Open Data, 1M+ records from 2010--present.
+    \item\href{https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2/about_data}{Chicago Crime Data}
 \end{itemize}
-\subsection{Chicago Weather Data}
+\subsubsection{\textbf{Chicago Weather Data}}
 \begin{itemize}
-    \item Source: NOAA National Centers for Environmental Information.
-    \item Daily temperature (high/low) and climate details.
+    \item NOAA National Centers for Environmental Information.Daily temperature and climate data in high/low format.
+    \item\href{https://www.ncdc.noaa.gov/cdo-web/datasets/LCD/stations/WBAN:14819/detai}{Chicago Weather Data}
 \end{itemize}
 
 \section{Evaluation Methods}
-To validate our findings, we will apply multiple evaluation techniques:
 \begin{itemize}
-    \item \textbf{Statistical Correlation Metrics}: Pearson and Spearman correlation to measure temperature-crime relationships.
-    \item \textbf{Clustering Evaluation}: Silhouette Score and Davies–Bouldin Index to assess crime grouping effectiveness.
-    \item \textbf{Time-Series Validation}: Baseline trend comparison, rolling window analysis, and seasonality strength measurement.
+    \item Statistical Correlation Metrics: Pearson Correlation, Spearman’s Rank Correlation, P-Value Significance Testing.
+    \item Clustering Evaluation: Silhouette Score, Davies–Bouldin Index.
+    \item Time-Series Analysis Validation: Baseline Trend Comparison, Rolling Window Analysis, Seasonality Strength Measurement.
 \end{itemize}
 
 \section{Tools and Technologies}
+\subsubsection{\textbf{Programming}}
 \begin{itemize}
-    \item \textbf{Programming and Data Processing}: Python (Pandas, NumPy, Matplotlib).
-    \item \textbf{Database and Storage}: MySQL for structured relational data.
-    \item \textbf{Visualization}: Matplotlib and Seaborn for graphical representation.
+    \item Python (Pandas, NumPy, Matplotlib).
 \end{itemize}
 
-\section{Project Timeline}
-\begin{table}[h]
+\subsubsection{\textbf{ Database}}
+\begin{itemize}
+    \item MySQL for structured relational data.
+\end{itemize}
+
+\subsubsection{\textbf{Visualization}}
+\begin{itemize}
+    \item Matplotlib for trend visualizations in Jupyter Notebook.
+\end{itemize}
+
+\section{Milestones and Timeline}
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|l|}
         \hline
@@ -101,19 +179,49 @@ To validate our findings, we will apply multiple evaluation techniques:
         Feb 17 & Peer Feedback \\
         Mar 3 & Proposal Paper \\
         Mar 17 & Progress Report \\
-        Apr 28 & Code and Descriptions \\
+        Apr 28 & Code \& Descriptions \\
         Apr 28 & Presentation \\
-        Apr 28 & Peer Evaluation and Interview \\
+        Apr 28 & Peer Evaluation \& Interview \\
         \hline
     \end{tabular}
-    \caption{Milestones and Timeline}
-    \label{tab:timeline}
 \end{table}
 
-\section{Conclusion}
-This project seeks to uncover actionable crime-weather relationships using data mining techniques. By integrating historical crime and temperature data, we aim to develop insights that enhance public safety, law enforcement strategies, and urban policy decisions.
+\section{Acknowledgements}
+\begin{itemize}
+    \item We also extend our appreciation to the City of Chicago and the National Centers for Environmental Information (NOAA) for providing publicly available crime and weather datasets. These datasets form the foundation of our research, enabling us to explore the correlation between temperature and violent crime trends.
+    
+\end{itemize}
 
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{references}
+\begin{thebibliography}{99}
+
+
+\bibitem{anderson1987}
+C. A. Anderson. "Temperature and aggression: Ubiquitous effects of heat on occurrence of human violence." 
+\textit{Psychological Bulletin}, vol. 102, no. 1, pp. 27–51, 1987.
+
+
+\bibitem{harries1984}
+K. D. Harries, S. J. Stadler, and R. T. Zdorkowski. "Seasonality and Assault: Explorations in Inter-neighborhood Variation, Dallas 1980." 
+\textit{Annals of the Association of American Geographers}, vol. 74, no. 4, pp. 590-604, 1984.
+
+
+\bibitem{ranson2014}
+M. Ranson. "Crime, weather, and climate change." 
+\textit{Journal of Environmental Economics and Management}, vol. 67, no. 3, pp. 274-302, 2014.
+
+
+\bibitem{chicago_crime_data}
+City of Chicago. "Chicago Crime Data (2001–Present)." 
+Available: \url{https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2/about_data}. Accessed: Feb. 2025.
+
+
+\bibitem{noaa_weather}
+National Centers for Environmental Information (NOAA). "Chicago Weather Data." 
+Available: \url{https://www.ncdc.noaa.gov/cdo-web/datasets/LCD/stations/WBAN:14819/detail}. Accessed: Feb. 2025.
+
+\bibitem{han2011}
+J. Han, M. Kamber, and J. Pei, \textit{Data Mining: Concepts and Techniques}. 3rd ed., Morgan Kaufmann, 2011.
+
+\end{thebibliography}
 
 \end{document}
